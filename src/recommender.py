@@ -10,8 +10,10 @@ def format_docs(docs) -> str:
 
 
 class AnimeRecommender:
-    def __init__(self, retriever, api_key: str, model_name: str):
-        self.llm = ChatGroq(api_key=api_key, model=model_name, temperature=0)
+    def __init__(self, retriever, api_key: str, model_name: str, max_tokens: int = 800):
+        self.llm = ChatGroq(
+            api_key=api_key, model=model_name, temperature=0, max_tokens=max_tokens
+        )
         self.prompt = get_anime_prompt()
         self.retriever = retriever
 
